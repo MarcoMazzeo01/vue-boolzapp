@@ -6,19 +6,20 @@
 /* * MAIN * */
 .grad-bg {
     height: 100vh;
-    background: rgb(0,151,136);
-    background: linear-gradient(180deg, rgba(0,151,136,1) 13%, rgba(214,219,215,1) 13%);
+    background: rgb(0, 151, 136);
+    background: linear-gradient(180deg, rgba(0, 151, 136, 1) 22%, rgba(214, 219, 215, 1) 22%);
 }
 
 main {
-    height: 95%;
-    max-height: 95%;
+    height: 93%;
+    max-height: 93%;
     background-color: white;
     border-radius: 6px;
     overflow: hidden;
 }
 
-main header:first-child, main header:last-child {
+main header:first-child,
+main header:last-child {
     background-color: #eaeaea;
 }
 
@@ -34,7 +35,7 @@ main header:last-child {
 /* ! CONTACTS LIST ! */
 
 /* * HEADER *  */
-main header:first-child > div > div {
+main header:first-child>div>div {
     color: var(--icons-color);
 }
 
@@ -66,13 +67,13 @@ main header:first-child {
     background-color: #fcfcfa;
 }
 
-.contacts__search-bar > input {
+.contacts__search-bar>input {
     border: var(--border-default) solid 1px;
     border-radius: 0;
     padding: 0px 5px;
 }
 
-.contacts__search-bar > button {
+.contacts__search-bar>button {
     border: var(--border-default) solid 1px;
     border-right: 0;
     border-radius: 0;
@@ -82,19 +83,20 @@ main header:first-child {
 }
 
 /* * CONTACTS LIST * */
-.contacts__list > li {
+.contacts__list>li {
     border-bottom: 1px solid var(--border-default);
 }
 
-.contacts__list > li:last-child {
+.contacts__list>li:last-child {
     border-bottom: 0;
 }
 
-.contacts__list > li:hover {
+.contacts__list>li:hover {
     background-color: #e9ebeb;
 }
 
-.contacts__list > li p, .contacts__list > li time {
+.contacts__list>li p,
+.contacts__list>li time {
     color: var(--icons-color)
 }
 
@@ -117,6 +119,72 @@ footer input[type=text] {
     border-radius: 7px;
 }
 
+/* MESSAGES INSIDE CONVO WINDOW */
+.msg {
+    --msg-max-width: 60%;
+
+    border-radius: 10px;
+    background-color: white;
+    width: fit-content;
+    min-width: 10%;
+    max-width: var(--msg-max-width);
+    padding: 3px 10px;
+    margin-bottom: 6px;
+
+    display: flex;
+    flex-direction: column;
+
+    /* ? tail - from google ? */
+    --r: 25px; /* the radius */
+    --t: 20px; /* the size of the tail */
+
+    -webkit-mask:
+        radial-gradient(var(--t) at var(--_d) 0, #0000 98%, #000 102%) var(--_d) 100%/calc(100% - var(--r)) var(--t) no-repeat,
+        conic-gradient(at var(--r) var(--r), #000 75%, #0000 0) calc(var(--r)/-2) calc(var(--r)/-2) padding-box,
+        radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0/var(--r) var(--r) space padding-box;
+}
+
+
+
+
+.left {
+    --_d: 0%;
+    border-left: var(--t) solid #0000;
+    margin-right: var(--t);
+    place-self: start;
+}
+
+.right {
+    --_d: 100%;
+    border-right: var(--t) solid #0000;
+    margin-left: var(--t);
+    place-self: end;
+}
+
+.msg__block.sender .msg {
+    background-color: white;
+}
+
+.msg__block.sender .msg:last-child {
+    max-width: calc(var(--msg-max-width) + var(--t));
+}
+
+.msg__block.sender .msg:not(:last-child) {
+    margin-left: var(--t);
+}
+ 
+.msg__block.localUser .msg {
+    background-color: #d5f9ba;
+}
+
+
+.msg time {
+   align-self: flex-end;
+   color: var(--icons-color);
+   margin-top: -3px;
+}
+
+
 
 
 
@@ -127,27 +195,4 @@ footer input[type=text] {
     width: 15%;
 }
 
-
-
-
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: var(--icons-color);
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #b5b5b5;
-    border-radius: 10px;
-    border: 0px none #ffffff;
-  }
+/* * SCROLLBAR CSS * */
