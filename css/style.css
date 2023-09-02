@@ -157,7 +157,6 @@ footer input[type=text] {
         radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0/var(--r) var(--r) space padding-box;
 }
 
-
 .left {
     --_d: 0%;
     border-left: var(--t) solid #0000;
@@ -172,10 +171,19 @@ footer input[type=text] {
     place-self: end;
 }
 
+.msg time {
+    color: var(--icons-color);
+    margin-top: -3px;
+    align-self: flex-end;
+ }
+
 .msg__block.sender .msg {
     background-color: white;
 }
 
+.msg__block.localUser .msg {
+    background-color: #d5f9ba;
+}
 .msg__block.sender .msg:last-child {
     max-width: calc(var(--msg-max-width) + var(--t));
 }
@@ -184,16 +192,20 @@ footer input[type=text] {
     margin-left: var(--t);
 }
  
-.msg__block.localUser .msg {
-    background-color: #d5f9ba;
+.msg__block.localUser {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 }
 
 
-.msg time {
-   align-self: flex-end;
-   color: var(--icons-color);
-   margin-top: -3px;
+
+.msg__block.localUser .msg:not(:last-child) {
+    margin-right: var(--t);
 }
+
+
+
 
 
 
