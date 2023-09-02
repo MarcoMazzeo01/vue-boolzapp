@@ -67,19 +67,32 @@ main header:first-child {
     background-color: #fcfcfa;
 }
 
-.contacts__search-bar>input {
+.contacts__search-bar>input[type=search] {
     border: var(--border-default) solid 1px;
-    border-radius: 0;
     padding: 0px 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+
+.contacts__search-bar>input[type=search]:focus {
+    border: 1px solid var(--icons-color);
 }
 
 .contacts__search-bar>button {
     border: var(--border-default) solid 1px;
     border-right: 0;
-    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     background-color: white;
     color: var(--icons-color);
     padding: 5px 25px;
+}
+
+/* todo: js to change button when search bas is focus on */
+.contacts__search-bar>input[type=search]:focus-within ~ .contacts__search-bar>button {
+    border: 1px solid var(--icons-color);
+    background-color: pink;
 }
 
 /* * CONTACTS LIST * */
@@ -145,8 +158,6 @@ footer input[type=text] {
 }
 
 
-
-
 .left {
     --_d: 0%;
     border-left: var(--t) solid #0000;
@@ -186,8 +197,6 @@ footer input[type=text] {
 
 
 
-
-
 /* ! MISC ! */
 .pfp {
     border-radius: 100%;
@@ -195,4 +204,30 @@ footer input[type=text] {
     width: 15%;
 }
 
+input[type=search], input[type=text] {  /* rimuove bordo nero quando si clicca su textbox */
+    box-shadow: 0;
+    outline: 0 none;
+}
+
 /* * SCROLLBAR CSS * */
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #787878 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: 10px;
+    border: 0;
+  }
