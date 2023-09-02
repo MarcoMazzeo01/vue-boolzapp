@@ -1,13 +1,72 @@
+:root {
+    --icons-color: #b1b1b1;
+}
+
 .grad-bg {
     height: 100vh;
     background: rgb(0,151,136);
     background: linear-gradient(180deg, rgba(0,151,136,1) 20%, rgba(214,219,215,1) 20%);
 }
 
+.convos-bg {
+    background-image: url("../img/mine.jpg");
+}
+
 #main-container {
-    background-color: white;
     height: 95%;
     max-height: 95%;
     border-radius: 3px;
     overflow: hidden;
+}
+
+.pfp {
+    border-radius: 100%;
+    aspect-ratio: 1;
+    width: 15%;
+}
+
+
+header {
+    background-color: #eaeaea;
+}
+
+header > section:nth-child(2) {
+    color: var(--icons-color);
+}
+
+
+.contacts__notification {
+    background-color: #8edafc;
+}
+
+.notification__icon {
+    background-color: white;
+    border-radius: 100%;
+    color: #8fd9fc;
+    width: 60px;
+    height: 60px;
+    aspect-ratio: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contacts__search-bar {
+    background-color: #fcfcfa;
+}
+
+.contacts__search-bar > input {
+    border: rgb(248, 248, 248) solid 1px;
+    border-radius: 0;
+    padding: 0px 5px;
+}
+
+.contacts__search-bar > button {
+    border: rgb(248, 248, 248) solid 1px;
+    border-right: 0;
+    border-radius: 0;
+    background-color: white;
+    color: var(--icons-color);
+    padding: 5px 25px;
 }

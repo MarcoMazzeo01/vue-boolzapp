@@ -25,13 +25,57 @@
         <div class="container" id="main-container">
 
             <!-- * contacts & convos columns * -->
-            <div class="row h-100">
+            <div class="row g-0 h-100">
 
                 <!-- ! CONTACTS ! -->
-                <div class="col-5" style="background-color: pink;">contacts</div>
+                <div class="col-5 bg-success">
+
+                    <!-- user bar -->
+                    <header class="container-fluid d-flex"> 
+                        <section class="d-flex align-items-center w-70 gap-2 p-2">
+                            <img src="./img/avatar_io.jpg" alt="Sofia" class="pfp">
+                            <h3 class="mb-0 fs-4">Sofia</h3>
+                        </section>
+
+                        <section class="d-flex align-items-center justify-content-around flex-fill p-2">
+                            <i class="fa-solid fa-circle-notch fa-lg"></i>
+                            <i class="fa-solid fa-message fa-lg"></i>
+                            <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                        </section>
+                    </header>
+
+                    <!-- notifications notice -->
+                    <div class="container-fluid contacts__notification d-flex align-items-center gap-3 p-3">
+                        <div>
+                            <div class="notification__icon">
+                                <i class="fa-solid fa-bell-slash fa-xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mb-0"><strong>Ricevi notifiche di nuovi messaggio</strong></p>
+                            <a href="#">Attiva notifiche Desktop</a>
+                        </div>
+                    </div>
+                    
+                    <!-- search convos -->
+                    <div class="container-fluid contacts__search-bar p-2 d-flex">
+                        
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="search" name="" id="" placeholder="Cerca o inizia una nuova chat" class="w-100">
+                    </div>
+
+                    <!-- contacts list -->
+                    <div class="container-fluid contacts__list h-100 overflow-auto">
+                        <div class="container-fluid" id="contacts__person">
+                            <img src="./img/avatar_1.jpg" alt="" class="pfp">
+                            <h4>{{contact}}</h4>
+                            <p>Ultimo messaggio inviato</p>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- ! CONVO ! -->
-                <div class="col-6">convos</div>
+                <div class="col-7 convos-bg">convos</div>
             </div>
         </div>
    </div>
