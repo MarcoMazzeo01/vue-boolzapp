@@ -1,0 +1,11 @@
+.grad-bg {
+    height: 100vh;
+    background: rgb(0,151,136);
+    background: linear-gradient(180deg, rgba(0,151,136,1) 20%, rgba(214,219,215,1) 20%);
+}
+
+#main-container {
+    background-color: white;
+    height: 95%;
+    max-height: 95%;
+}
