@@ -7,6 +7,7 @@ const Boolzapp = createApp({
             activeContact: {...contacts[0]},
             lastMsgInSequence: undefined,
             newMsg: '',
+            replyDebounce: false
         }
 
     },
@@ -47,6 +48,9 @@ const Boolzapp = createApp({
 
         sendMsg() {
 
+           if (this.newMsg == '' || this.replyDebounce == true) { return }
+
+           this.replyDebounce = true
             const newMsg = {
                 date: '12:00',
                 message: this.newMsg,
@@ -57,11 +61,12 @@ const Boolzapp = createApp({
             setTimeout(() => {
                 const reply = {
                     date: '12:00',
-                    message: 'OKURRR',
+                    message: "OKURRR!",
                     status: 'received'
                 }
                 this.activeContact.messages.push(reply)
                 this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
+                this.replyDebounce = false
             },1000)
 
             this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
