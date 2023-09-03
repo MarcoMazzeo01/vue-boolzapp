@@ -157,6 +157,10 @@ footer input[type=text] {
         radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0/var(--r) var(--r) space padding-box;
 }
 
+.msg.right, .msg.left {
+    max-width: calc(var(--msg-max-width) + var(--t));
+}
+
 .msg time {
     color: var(--icons-color);
     margin-top: -3px;
@@ -183,26 +187,16 @@ footer input[type=text] {
 }
 
 
-
-
-
-
-
-
-
-
-
-.msg_row.sender .msg:last-child {
-    max-width: calc(var(--msg-max-width) + var(--t));
+.msg:not(.right) {
+    margin-right: var(--t);
 }
 
-.msg_row.sender .msg:not(:last-child) {
+.msg:not(.left) {
     margin-left: var(--t);
 }
 
-.msg_row.localUser .msg:not(:last-child) {
-    margin-right: var(--t);
-}
+
+
 
 
 .left {

@@ -5,25 +5,49 @@ const Boolzapp = createApp({
         return {
             contacts: contacts,
             activeContact: {...contacts[0]},
-            lastMsg: undefined,
+            lastMsgInSequence: undefined,
         }
 
     },
 
     methods: {
-        showConvo(index) {
-            const reactive = this.contacts[index].messages
-        
+        loadConvo(index) {
             this.activeContact = {...this.contacts[index]}
-        
-            for (i = 0; i < reactive.length; i++) {
-        
-                const textMsg = reactive[i]
-        
-            }
-        
+            this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
         },
-        
+
+        getLastMsgInSequence(messages) {
+            const lastMessages = [];
+            let currentStatus = null;
+          
+            for (let i = messages.length - 1; i >= 0; i--) {
+              const message = messages[i];
+              if (message.status !== currentStatus) {
+
+                message.index = i
+                lastMessages.push(message);
+                currentStatus = message.status;
+              }
+            }
+            return lastMessages.reverse();
+        },
+
+        isLastMsgInSequence(index,msgObj) {
+
+            for (let i = 0; i <= (this.lastMsgInSequence.length - 1); i++) {
+                if (index == this.lastMsgInSequence[i].index) {
+                    const status = this.lastMsgInSequence[i].status;
+                   return (status == 'sent') ? 'right' : 'left'
+                }
+            }
+            
+            return '';
+            
+
+        },
+
+
+
 
         isLastMsg(messages,currentIndex) {
            if ((currentIndex) == messages.length - 1) {
@@ -31,6 +55,11 @@ const Boolzapp = createApp({
            }
         }
     },
+
+    created() {
+        this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
+        console.log(this.lastMsgInSequence)
+    }
 
 }).mount("#boolzapp")
 

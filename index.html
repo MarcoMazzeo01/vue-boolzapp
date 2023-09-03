@@ -81,7 +81,7 @@
 
                         <ul class="contacts__list no-style">
 
-                            <li v-for="(contact,index) in contacts" class="d-flex align-items-center gap-3 p-3" @click="showConvo(index)">
+                            <li v-for="(contact,index) in contacts" class="d-flex align-items-center gap-3 p-3" @click="loadConvo(index)">
                                 <img :src="contact.avatar" alt="" class="pfp">
 
                                 <section class="d-flex flex-column justify-content-around">
@@ -128,7 +128,7 @@
 
                         
                         <div class="msg_row" v-for="(msgObj,index) in (activeContact.messages)" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
-                            <div class="msg" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsg(activeContact.messages,index) ? 'left' : ''">
+                            <div class="msg" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
                                 <p class="mb-0">{{msgObj.message}}</p>
                                 <time>{{msgObj.date}}</time>
                             </div>
