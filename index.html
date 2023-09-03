@@ -80,7 +80,8 @@
                     <div class="container-fluid contacts__list-container overflow-auto bg-white">
 
                         <ul class="contacts__list no-style">
-                            <li v-for="(contact,index) in contacts" class="d-flex align-items-center gap-3 p-3">
+
+                            <li v-for="(contact,index) in contacts" class="d-flex align-items-center gap-3 p-3" @click="showConvo(index)">
                                 <img :src="contact.avatar" alt="" class="pfp">
 
                                 <section class="d-flex flex-column justify-content-around">
@@ -95,6 +96,7 @@
                     </div>
                 </div>
 
+
                 <!-- ! CONVO ! -->
                 <div class="col-7 h-100 convos-bg d-flex flex-column">
 
@@ -104,10 +106,10 @@
 
                             <!-- pfp, name, status -->
                             <section class="d-flex align-items-center gap-2">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
+                                <img :src="activeContact.avatar" alt="" class="pfp">
 
                                 <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
+                                    <h5 class="mb-0 fw-normal">{{activeContact.name}}</h5>
                                     <p class="mb-0 text-muted">Ultimo accesso oggi alle 12:00</p>
                                 </section>
                             </section>
@@ -124,7 +126,16 @@
                     <!-- convo messages -->
                     <div class="overflow-auto h-100 py-4 px-2">
 
-                        <section class="msg__block sender">
+                        
+                        <div class="msg_row" v-for="(msgObj,index) in (activeContact.messages)" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
+                            <div class="msg" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsg(activeContact.messages,index) ? 'left' : ''">
+                                <p class="mb-0">{{msgObj.message}}</p>
+                                <time>{{msgObj.date}}</time>
+                            </div>
+                        </div>
+
+                        <!--?  examples ?-->
+                        <section class="msg__block sender d-none">
 
                             <div class="msg">
                                 <p class="mb-0">Butta fuori la spazzatura!</p>
@@ -138,7 +149,7 @@
                             </div>
                         </section>
 
-                        <section class="msg__block localUser">
+                        <section class="msg__block localUser d-none">
                             <div class="msg">
                                 <p class="mb-0_test">test</p>
                                 <time>12:00</time>
@@ -149,6 +160,9 @@
                                 <time>12:00</time>
                             </div>
                         </section>
+
+                      
+
                         
                     </div>
 
