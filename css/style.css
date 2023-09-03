@@ -141,7 +141,7 @@ footer input[type=text] {
     width: fit-content;
     min-width: 10%;
     max-width: var(--msg-max-width);
-    padding: 3px 10px;
+    padding: 5px 10px;
     margin-bottom: 6px;
 
     display: flex;
@@ -155,6 +155,10 @@ footer input[type=text] {
         radial-gradient(var(--t) at var(--_d) 0, #0000 98%, #000 102%) var(--_d) 100%/calc(100% - var(--r)) var(--t) no-repeat,
         conic-gradient(at var(--r) var(--r), #000 75%, #0000 0) calc(var(--r)/-2) calc(var(--r)/-2) padding-box,
         radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0/var(--r) var(--r) space padding-box;
+}
+
+.msg p {
+    min-height: 30px;
 }
 
 .msg.right, .msg.left {
