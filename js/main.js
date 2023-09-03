@@ -6,6 +6,7 @@ const Boolzapp = createApp({
             contacts: contacts,
             activeContact: {...contacts[0]},
             lastMsgInSequence: undefined,
+            newMsg: '',
         }
 
     },
@@ -42,12 +43,31 @@ const Boolzapp = createApp({
             }
             
             return '';
-            
-
         },
 
+        sendMsg() {
 
+            const newMsg = {
+                date: '12:00',
+                message: this.newMsg,
+                status: 'sent'
+            }
+            this.activeContact.messages.push(newMsg)
+            
+            setTimeout(() => {
+                const reply = {
+                    date: '12:00',
+                    message: 'OKURRR',
+                    status: 'received'
+                }
+                this.activeContact.messages.push(reply)
+                this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
+            },1000)
 
+            this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
+            this.newMsg = ''
+            
+        },
 
         isLastMsg(messages,currentIndex) {
            if ((currentIndex) == messages.length - 1) {
