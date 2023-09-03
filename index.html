@@ -22,12 +22,13 @@
     <!-- javascript -->
     <script src="./js/db.js" type="text/javascript" defer></script>
     <script src="./js/main.js" type="text/javascript" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </head>
 
 <body>
 
-    <div class="container-fluid grad-bg d-flex align-items-center">
+    <div class="container-fluid grad-bg d-flex align-items-center" id="boolzapp">
         <main class="container p-0">
 
             <!-- * contacts & convos columns * -->
@@ -79,107 +80,17 @@
                     <div class="container-fluid contacts__list-container overflow-auto bg-white">
 
                         <ul class="contacts__list no-style">
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
+                            <li v-for="(contact,index) in contacts" class="d-flex align-items-center gap-3 p-3">
+                                <img :src="contact.avatar" alt="" class="pfp">
 
                                 <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
+                                    <h5 class="mb-0 fw-normal">{{contact.name}}</h5>
                                     <p class="mb-0">Ultimo messaggio inviato</p>
                                 </section>
 
                                 <time class="align-self-start flex-fill text-end">12:00</time>
                             </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            <li v-for="" class="d-flex align-items-center gap-3 p-3">
-                                <img src="./img/avatar_1.jpg" alt="" class="pfp">
-
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
-
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-
+                            
                         </ul>
                     </div>
                 </div>
