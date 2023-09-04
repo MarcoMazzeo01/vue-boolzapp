@@ -66,8 +66,11 @@ const Boolzapp = createApp({
            if (this.newMsg == '' || this.replyDebounce == true) { return }
 
            this.replyDebounce = true
+
+            // console.log(DateTime.now().toLocaleString({...DateTime.DATETIME_SHORT_WITH_SECONDS, day: '2-digit', month: '2-digit'}).replace(",",""))
+
             const newMsg = {
-                date: '12:00',
+                date: DateTime.now().toLocaleString({...DateTime.DATETIME_SHORT_WITH_SECONDS, day: '2-digit', month: '2-digit'}).replace(",",""),
                 message: this.newMsg,
                 status: 'sent'
             }
@@ -75,7 +78,7 @@ const Boolzapp = createApp({
             
             setTimeout(() => {
                 const reply = {
-                    date: '12:00',
+                    date: DateTime.now().toLocaleString({...DateTime.DATETIME_SHORT_WITH_SECONDS, day: '2-digit', month: '2-digit'}).replace(",",""),
                     message: "OKURRR!",
                     status: 'received'
                 }
@@ -90,8 +93,10 @@ const Boolzapp = createApp({
         },
 
         formatTime(date) {
+            console.log(date)
             const dateTime = DateTime.fromFormat(date, 'dd/MM/yyyy HH:mm:ss');
             const formattedTime = dateTime.toFormat('HH:mm');
+            // console.log(dateTime, formattedTime)
             return formattedTime
 
         }
