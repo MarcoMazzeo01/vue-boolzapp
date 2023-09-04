@@ -15,6 +15,9 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.2/build/global/luxon.min.js"></script>
+
     <!-- css -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/utils.css">
@@ -82,20 +85,21 @@
 
                         <ul class="contacts__list no-style">
 
-                                <li v-for="(contact, index) in searchContact"
-                                    class="d-flex align-items-center gap-3 p-3" @click="loadConvo(index)">
-                                    <img :src="contact.avatar" alt="" class="pfp">
+                            <li v-for="(contact, index) in searchContact" class="d-flex align-items-center gap-3 p-3"
+                                @click="loadConvo(index)">
+                                <img :src="contact.avatar" alt="" class="pfp">
 
-                                    <section class="d-flex flex-column justify-content-around">
-                                        <h5 class="mb-0 fw-normal">{{ contact.name }}</h5>
-                                        <p class="mb-0">Ultimo messaggio inviato</p>
-                                    </section>
+                                <section class="d-flex flex-column justify-content-around">
+                                    <h5 class="mb-0 fw-normal">{{ contact.name }}</h5>
+                                    <p class="mb-0">Ultimo messaggio inviato</p>
+                                </section>
 
-                                    <time class="align-self-start flex-fill text-end">12:00</time>
-                                </li>
-                           
+                                <time class="align-self-start flex-fill text-end">12:00</time>
+                            </li>
 
-                            <p v-show="searchResult.length == 0" class="text-center text-secondary fs-6 mt-1">Nessun contatto trovato!</p>
+
+                            <p v-show="searchResult.length == 0" class="text-center text-secondary fs-6 mt-1">Nessun
+                                contatto trovato!</p>
                         </ul>
                     </div>
                 </div>
@@ -135,7 +139,10 @@
                             <div class="msg"
                                 :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
                                 <p class="mb-0">{{msgObj.message}}</p>
-                                <time>{{msgObj.date}}</time>
+                                <time>
+                                    <!-- {{msgObj.date}} -->
+                                    {{formatTime(msgObj.date)}}
+                                </time>
                             </div>
                         </div>
 

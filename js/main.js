@@ -1,4 +1,5 @@
 const { createApp } = Vue
+const { DateTime } = luxon
 
 const Boolzapp = createApp({
     data() {
@@ -18,10 +19,10 @@ const Boolzapp = createApp({
         searchContact() {
             this.searchResult = this.contacts.filter(contact => {
                 const queryResult = contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-                 console.log(queryResult)
+                //  console.log(queryResult)
                 return queryResult
             })
-            console.log(this.searchResult)
+            // console.log(this.searchResult)
             return this.searchResult
         }
     },
@@ -87,6 +88,13 @@ const Boolzapp = createApp({
             this.newMsg = ''
             
         },
+
+        formatTime(date) {
+            const dateTime = DateTime.fromFormat(date, 'dd/MM/yyyy HH:mm:ss');
+            const formattedTime = dateTime.toFormat('HH:mm');
+            return formattedTime
+
+        }
     },
 
     created() {
