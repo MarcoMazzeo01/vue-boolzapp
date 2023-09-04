@@ -9,17 +9,20 @@ const Boolzapp = createApp({
             newMsg: '',
             replyDebounce: false,
             searchQuery: '',
+            searchResult: [],
         }
 
     },
 
     computed: { // * messo in computed in modo che la lista contatti venga renderizzata automaticamente quando la pagina carica
         searchContact() {
-            return this.contacts.filter(contact => {
+            this.searchResult = this.contacts.filter(contact => {
                 const queryResult = contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-                // console.log(queryResult)
+                 console.log(queryResult)
                 return queryResult
             })
+            console.log(this.searchResult)
+            return this.searchResult
         }
     },
 

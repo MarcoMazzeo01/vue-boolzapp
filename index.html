@@ -73,7 +73,8 @@
                     <div class="container-fluid contacts__search-bar p-2 d-flex">
 
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="search" name="" id="" placeholder="Cerca o inizia una nuova chat" class="w-100" v-model="searchQuery">
+                        <input type="search" name="" id="" placeholder="Cerca o inizia una nuova chat" class="w-100"
+                            v-model="searchQuery">
                     </div>
 
                     <!-- contacts list -->
@@ -81,18 +82,20 @@
 
                         <ul class="contacts__list no-style">
 
-                            <li v-for="(contact,index) in searchContact" class="d-flex align-items-center gap-3 p-3" @click="loadConvo(index)">
-                                <!-- v-for="(contact,index) in contacts" -->
-                                <img :src="contact.avatar" alt="" class="pfp">
+                                <li v-for="(contact, index) in searchContact"
+                                    class="d-flex align-items-center gap-3 p-3" @click="loadConvo(index)">
+                                    <img :src="contact.avatar" alt="" class="pfp">
 
-                                <section class="d-flex flex-column justify-content-around">
-                                    <h5 class="mb-0 fw-normal">{{contact.name}}</h5>
-                                    <p class="mb-0">Ultimo messaggio inviato</p>
-                                </section>
+                                    <section class="d-flex flex-column justify-content-around">
+                                        <h5 class="mb-0 fw-normal">{{ contact.name }}</h5>
+                                        <p class="mb-0">Ultimo messaggio inviato</p>
+                                    </section>
 
-                                <time class="align-self-start flex-fill text-end">12:00</time>
-                            </li>
-                            
+                                    <time class="align-self-start flex-fill text-end">12:00</time>
+                                </li>
+                           
+
+                            <p v-show="searchResult.length == 0" class="text-center text-secondary fs-6 mt-1">Nessun contatto trovato!</p>
                         </ul>
                     </div>
                 </div>
@@ -127,19 +130,22 @@
                     <!-- convo messages -->
                     <div class="overflow-auto h-100 py-4 px-2">
 
-                        <div class="msg_row" v-for="(msgObj,index) in (activeContact.messages)" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
-                            <div class="msg" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
+                        <div class="msg_row" v-for="(msgObj,index) in (activeContact.messages)"
+                            :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
+                            <div class="msg"
+                                :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
                                 <p class="mb-0">{{msgObj.message}}</p>
                                 <time>{{msgObj.date}}</time>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <!-- send msg -->
                     <footer class="w-100 d-flex justify-content-between align-items-center gap-4 px-4">
                         <i class="fa-regular fa-face-smile fa-xl"></i>
-                        <input type="text" placeholder="Scrivi un messaggio..." class="flex-grow-1 py-2 px-3" v-model="newMsg" @keyup.enter="sendMsg">
+                        <input type="text" placeholder="Scrivi un messaggio..." class="flex-grow-1 py-2 px-3"
+                            v-model="newMsg" @keyup.enter="sendMsg">
                         <i class="fa-solid fa-microphone fa-xl"></i>
                     </footer>
 
