@@ -138,8 +138,7 @@
 
                         <div class="msg_row" v-for="(msgObj,index) in (activeContact.messages)"
                             :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
-                            <div class="msg"
-                                :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
+                            <div class="msg" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
                                 <p class="mb-0">{{msgObj.message}}</p>
                                 <time>{{formatTime(msgObj.date)}}</time>
                             </div>

@@ -93,7 +93,6 @@ const Boolzapp = createApp({
         },
 
         formatTime(date) {
-            console.log(date)
             const dateTime = DateTime.fromFormat(date, 'dd/MM/yyyy HH:mm:ss');
             const formattedTime = dateTime.toFormat('HH:mm');
             // console.log(dateTime, formattedTime)
