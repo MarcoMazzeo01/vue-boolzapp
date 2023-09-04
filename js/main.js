@@ -7,9 +7,20 @@ const Boolzapp = createApp({
             activeContact: {...contacts[0]},
             lastMsgInSequence: undefined,
             newMsg: '',
-            replyDebounce: false
+            replyDebounce: false,
+            searchQuery: '',
         }
 
+    },
+
+    computed: { // * messo in computed in modo che la lista contatti venga renderizzata automaticamente quando la pagina carica
+        searchContact() {
+            return this.contacts.filter(contact => {
+                const queryResult = contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+                // console.log(queryResult)
+                return queryResult
+            })
+        }
     },
 
     methods: {
@@ -73,17 +84,11 @@ const Boolzapp = createApp({
             this.newMsg = ''
             
         },
-
-        isLastMsg(messages,currentIndex) {
-           if ((currentIndex) == messages.length - 1) {
-            return true
-           }
-        }
     },
 
     created() {
         this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
-        console.log(this.lastMsgInSequence)
+        // console.log(this.lastMsgInSequence)
     }
 
 }).mount("#boolzapp")
