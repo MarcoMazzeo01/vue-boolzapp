@@ -163,6 +163,7 @@ footer input[type=text] {
 
 .msg.right, .msg.left {
     max-width: calc(var(--msg-max-width) + var(--t));
+    min-width: 70px;
 }
 
 .msg time {
@@ -198,10 +199,6 @@ footer input[type=text] {
 .msg:not(.left) {
     margin-left: var(--t);
 }
-
-
-
-
 
 .left {
     --_d: 0%;
