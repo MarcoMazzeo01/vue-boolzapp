@@ -143,7 +143,7 @@
                             :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
 
                             <div class="msg" 
-                            :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)"
+                            :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index, activeContact.messages)"
                             @mouseenter="promptMenu(msgObj, true)" @mouseleave="promptMenu(msgObj, false)">
 
                                 <p class="mb-0 text-break">{{msgObj.message}}</p>
