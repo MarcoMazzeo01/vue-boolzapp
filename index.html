@@ -138,9 +138,31 @@
 
                         <div class="msg_row" v-for="(msgObj,index) in (activeContact.messages)"
                             :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
-                            <div class="msg" :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)">
-                                <p class="mb-0">{{msgObj.message}}</p>
+
+                            <div class="msg" 
+                            :class="(msgObj.status == 'sent') ? 'localUser' : 'sender'"
+                            @mouseenter="promptMenu(msgObj, true)" @mouseleave="promptMenu(msgObj, true)">
+                                <!-- , isLastMsgInSequence(index,msgObj)"> -->
+
+                                <p class="mb-0 text-break">{{msgObj.message}}</p>
                                 <time>{{formatTime(msgObj.date)}}</time>
+
+                                <div class="dropdown__container" v-show="msgObj.showMenu">
+
+                                    <div class="dropdown">
+                                        <button class="dropdown__button" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </button>
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>Info messaggio</li>
+                                            <li @click="activeContact.messages.splice(index, 1)">Elimina messaggio</li>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 

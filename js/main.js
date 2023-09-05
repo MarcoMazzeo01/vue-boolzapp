@@ -98,6 +98,10 @@ const Boolzapp = createApp({
             // console.log(dateTime, formattedTime)
             return formattedTime
 
+        },
+
+        promptMenu(msg,bool) {
+            msg.showMenu = bool
         }
     },
 
