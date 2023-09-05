@@ -54,7 +54,7 @@ const Boolzapp = createApp({
             for (let i = 0; i <= (this.lastMsgInSequence.length - 1); i++) {
                 if (index == this.lastMsgInSequence[i].index) {
                     const status = this.lastMsgInSequence[i].status;
-                   return (status == 'sent') ? 'right' : 'left'
+                   return (status == 'sent') ? 'localUser__tail' : 'sender__tail'
                 }
             }
             
@@ -62,7 +62,6 @@ const Boolzapp = createApp({
         },
 
         sendMsg() {
-
            if (this.newMsg == '' || this.replyDebounce == true) { return }
 
            this.replyDebounce = true

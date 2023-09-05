@@ -143,9 +143,8 @@
                             :class="(msgObj.status == 'sent') ? 'localUser' : 'sender' ">
 
                             <div class="msg" 
-                            :class="(msgObj.status == 'sent') ? 'localUser' : 'sender'"
+                            :class="(msgObj.status == 'sent') ? 'localUser' : 'sender', isLastMsgInSequence(index,msgObj)"
                             @mouseenter="promptMenu(msgObj, true)" @mouseleave="promptMenu(msgObj, false)">
-                                <!-- , isLastMsgInSequence(index,msgObj)"> -->
 
                                 <p class="mb-0 text-break">{{msgObj.message}}</p>
                                 <time>{{formatTime(msgObj.date)}}</time>

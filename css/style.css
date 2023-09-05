@@ -1,6 +1,8 @@
 :root {
     --icons-color: #b1b1b1;
     --border-default: #e7e7e7;
+    --sender-msg-bg: white;
+    --localUser-msg-bg: #d5f9ba;
 }
 
 /* * MAIN * */
@@ -148,24 +150,6 @@ footer input[type=text] {
     flex-direction: column;
     position: relative;
 
-    /* ? tail - from google ? */
-    --r: 25px; /* the radius */
-    --t: 20px; /* the size of the tail */
-
-    -webkit-mask:
-        radial-gradient(var(--t) at var(--_d) 0, #0000 98%, #000 102%) var(--_d) 100%/calc(100% - var(--r)) var(--t) no-repeat,
-        conic-gradient(at var(--r) var(--r), #000 75%, #0000 0) calc(var(--r)/-2) calc(var(--r)/-2) padding-box,
-        radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0/var(--r) var(--r) space padding-box;
-}
-
-
-/* .msg p {
-    min-height: 30px;
-} */
-
-.msg.right, .msg.left {
-    max-width: calc(var(--msg-max-width) + var(--t));
-    min-width: 70px;
 }
 
 .msg time {
@@ -194,26 +178,42 @@ footer input[type=text] {
 }
 
 
-.msg:not(.right) {
-    margin-right: var(--t);
+.msg:not(.localUser__tail) {
+    margin-right: 10px;
 }
 
-.msg:not(.left) {
-    margin-left: var(--t);
+.msg:not(.sender__tail) {
+    margin-left: 10px;
 }
 
-.left {
-    --_d: 0%;
-    border-left: var(--t) solid #0000;
-    margin-right: var(--t);
-    place-self: start;
+.localUser__tail {
+    margin-right: 10px;
 }
 
-.right {
-    --_d: 100%;
-    border-right: var(--t) solid #0000;
-    margin-left: var(--t);
-    place-self: end;
+.sender__tail {
+    margin-left: 10px;
+}
+
+.localUser__tail::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -9px;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--localUser-msg-bg);
+  }
+
+.sender__tail::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -9px;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--sender-msg-bg) transparent transparent;
 }
 
 
@@ -245,11 +245,11 @@ footer input[type=text] {
 }
 
 .localUser .dropdown__container {
-    background-image: linear-gradient(to left bottom, #d5f9ba, rgba(213,249,186,0.8), transparent);
+    background-image: linear-gradient(to left bottom, var(--localUser-msg-bg), rgba(213,249,186,0.8), transparent);
 }
 
 .sender .dropdown__container {
-    background-image: linear-gradient(to left bottom, #ffffff, rgba(255, 255, 255, 0.8), transparent);
+    background-image: linear-gradient(to left bottom, var(--sender-msg-bg), rgba(255, 255, 255, 0.8), transparent);
 }
 
 .dropdown__button {
