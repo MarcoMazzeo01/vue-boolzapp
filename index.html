@@ -68,7 +68,7 @@
                         </div>
                         <div>
                             <p class="mb-0"><strong>Ricevi notifiche di nuovi messaggio</strong></p>
-                            <a href="#">Attiva notifiche Desktop</a>
+                            <a href="#" class="text-decoration-underline text-secondary">Attiva notifiche Desktop</a>
                         </div>
                     </div>
 
@@ -91,12 +91,15 @@
 
                                 <section class="d-flex flex-column justify-content-around">
                                     <h5 class="mb-0 fw-normal">{{ contact.name }}</h5>
-                                    <p class="mb-0">{{contact.messages[contact.messages.length-1].message}}</p>
+                                    <p class="mb-0" v-if="contact.messages.length">{{contact.messages[contact.messages.length-1].message}}</p>
+                                    <p class="mb-0 fst-italic" v-else>Nessun messaggio disponibile.</p>
                                 </section>
 
-                                <time class="align-self-start flex-fill text-end">
+                                <time class="align-self-start flex-fill text-end" v-if="contact.messages.length">
                                     {{formatTime(contact.messages[contact.messages.length-1].date)}}
                                 </time>
+
+                                <time class="align-self-start flex-fill text-end" v-else></time>
                             </li>
 
 
@@ -141,7 +144,7 @@
 
                             <div class="msg" 
                             :class="(msgObj.status == 'sent') ? 'localUser' : 'sender'"
-                            @mouseenter="promptMenu(msgObj, true)" @mouseleave="promptMenu(msgObj, true)">
+                            @mouseenter="promptMenu(msgObj, true)" @mouseleave="promptMenu(msgObj, false)">
                                 <!-- , isLastMsgInSequence(index,msgObj)"> -->
 
                                 <p class="mb-0 text-break">{{msgObj.message}}</p>
