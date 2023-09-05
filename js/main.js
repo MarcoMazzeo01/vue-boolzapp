@@ -6,7 +6,6 @@ const Boolzapp = createApp({
         return {
             contacts: contacts,
             activeContact: { ...contacts[0] },
-            lastMsgInSequence: undefined,
             newMsg: '',
             replyDebounce: false,
             searchQuery: '',
@@ -33,35 +32,13 @@ const Boolzapp = createApp({
             this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
         },
 
-        getLastMsgInSequence(messages) {
-            const lastMessages = [];
-            let currentStatus = null;
-
-            for (let i = messages.length - 1; i >= 0; i--) {
-                const message = messages[i];
-                if (message.status !== currentStatus) {
-
-                    message.index = i
-                    lastMessages.push(message);
-                    currentStatus = message.status;
-                }
-            }
-            return lastMessages.reverse();
-        },
-
         isLastMsgInSequence(index, messages) {
             const currentMsgObj = messages[index]
 
             const nextIndex = (index + 1 >= messages.length) ? messages.length : index + 1
             const nextMsg = messages[nextIndex]
 
-            // console.log("Current: " + currentMsgObj.message, currentMsgObj.status, index)
-            // console.log("Next: " + nextMsg.message, nextMsg.status, nextIndex) << error here outside statement
-            // console.log("-----------")
-            // console.log(prevMsg.status, prevIndex)
-
-
-            if (!nextMsg) { //error fixed here
+            if (!nextMsg) {
                 return (currentMsgObj.status == 'sent') ? 'localUser__tail' : 'sender__tail'
             } else {
 
@@ -71,19 +48,6 @@ const Boolzapp = createApp({
                     return '';
                 }
             }
-
- 
-
-
-
-            // for (let i = index; i <= (this.lastMsgInSequence.length - 1); i++) {
-            //     if (index == this.lastMsgInSequence[i].index) {
-            //         const status = this.lastMsgInSequence[i].status;
-            //        return (status == 'sent') ? 'localUser__tail' : 'sender__tail'
-            //     }
-            // }
-
-            // return '';
 
 
         },
@@ -109,11 +73,10 @@ const Boolzapp = createApp({
                     status: 'received'
                 }
                 this.activeContact.messages.push(reply)
-                this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
+               
                 this.replyDebounce = false
             }, 1000)
 
-            this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
             this.newMsg = ''
 
         },
@@ -131,10 +94,6 @@ const Boolzapp = createApp({
         }
     },
 
-    created() {
-        this.lastMsgInSequence = this.getLastMsgInSequence(this.activeContact.messages)
-        // console.log(this.lastMsgInSequence)
-    }
 
 }).mount("#boolzapp")
 
